@@ -12,31 +12,22 @@ class BarangController extends Controller
      */
     public function index()
     {
-        //Menampilkan list daftar barang
+        //
         $data = [
             'barang' => Barang::all()
         ];
         return view('barang.index', $data);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function tambah()
     {
-        //
         return view('barang.tambah');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function simpan(Request $request)
     {
-        //
         $validate = $request->validate([
             'nama_barang'   => ['required'],
-            'barcode'   => ['required'],
+            'barcode' => ['required']
         ]);
 
         //Check Validasi
@@ -52,7 +43,7 @@ class BarangController extends Controller
                 endif;
             else :
                 //Insert
-                $validate['id_cabang'] = 1;
+                $validate['id_perusahaan'] = 1;
                 $dataInsert = Barang::create($validate);
                 if ($dataInsert) :
                     return redirect('/dashboard/barang')->with('success', 'Data barang baru berhasil ditambah');
@@ -64,26 +55,8 @@ class BarangController extends Controller
         endif;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Request $request)
-    {
-        //
-        //Get Id
-        $data = [
-            'barang' =>   Barang::where('id_barang', $request->id)
-                ->first()
-        ];
-        return view('barang.edit', $data);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function hapus(Barang $barang, Request $request)
     {
-        //
         $id_barang = $request->id;
         //Hapus 
         $aksi = $barang->where('id_barang', $id_barang)->delete();
@@ -91,7 +64,7 @@ class BarangController extends Controller
             //Pesan Berhasil
             $pesan = [
                 'success'   => true,
-                'pesan'     => 'Data barang berhasil dihapus'
+                'pesan'     => 'Data cabang berhasil dihapus'
             ];
         else :
             //Pesan Gagal
@@ -102,6 +75,35 @@ class BarangController extends Controller
         endif;
         return response()->json($pesan);
     }
+    public function edit(Request $request)
+    {
+        //Get Id
+        $data = [
+            'barang' =>   Barang::where('id_barang', $request->id)
+                ->first()
+        ];
+        return view('barang.edit', $data);
+    }
+
+
+
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -111,11 +113,22 @@ class BarangController extends Controller
         //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Barang $barang)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Barang $barang)
     {
         //
     }

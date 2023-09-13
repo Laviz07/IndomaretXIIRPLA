@@ -13,11 +13,11 @@ return new class extends Migration
     {
         //
         DB::unprepared('
-        CREATE TRIGGER barang_trigger AFTER INSERT ON `barang` FOR EACH ROW
-            BEGIN
-                INSERT INTO role_user (`role_id`, `user_id`, `created_at`, `updated_at`) 
-                VALUES (3, NEW.id, now(), null);
-            END
+        CREATE TRIGGER trigger_cabang_stok AFTER INSERT ON cabang FOR EACH ROW
+        BEGIN
+            INSERT INTO stok (id_barang, id_cabang,harga,stok)
+            SELECT id_barang, new.id_cabang, 0, 0 FROM barang;
+        END
         ');
     }
 

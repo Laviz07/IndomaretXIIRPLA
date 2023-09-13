@@ -12,9 +12,9 @@ class Cabang extends Model
     use HasFactory, Notifiable, HasApiTokens;
     protected $table = 'cabang';
     protected $primaryKey = 'id_cabang';
-    protected $fillable = [
-        'id_perusahaan', 'alamat',
-        'kode_cabang', 'nama_cabang', 'penanggung_jawab'
-    ];
     public $timestamps = false;
+    protected $fillable = [
+        'id_perusahaan', 'nama_cabang',
+        'alamat', 'kode_cabang', 'penanggung_jawab'
+    ];
 }
