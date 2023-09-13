@@ -9,7 +9,7 @@ class Perusahaan extends Model
 {
     use HasFactory;
     protected $table = 'perusahaan';
-    protected $fillable = ['npwp', 'alamat', 'nama_perusahaan'];
+    protected $fillable = ['alamat', 'nama_perusahaan'];
     protected $primaryKey = 'id_perusahaan';
     public $timestamps = false;
 }

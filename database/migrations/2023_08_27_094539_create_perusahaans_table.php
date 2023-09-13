@@ -16,7 +16,7 @@ return new class extends Migration
             // $table->timestamps();
             $table->integer('id_perusahaan')->autoIncrement();
             $table->string('nama_perusahaan', 100)->nullable(false);
-            $table->string('npwp', 30)->nullable(false);
+            // $table->string('npwp', 30)->nullable(false);
             $table->text('alamat')->nullable(false);
         });
     }

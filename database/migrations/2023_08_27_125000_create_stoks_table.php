@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('id_barang', false)->nullable(false)->index('idBarangStok');
             $table->integer('id_cabang', false)->index('idCabangStok')->nullable(false);
             $table->float('harga', 10, 2)->nullable(false);
+            $table->integer('stok',false)->nullable(false)->default(0);
             $table->timestamps();
 
             //foreign key barang

@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('cabang', function (Blueprint $table) {
             // $table->id();
             // $table->timestamps();
-            $table->integer('id_cabang', true);
+            $table->integer('id_cabang', true)->nullable(false);
             $table->integer('id_perusahaan', false)->index('idPerusahaan');
-            $table->string('nama', 100)->nullable(false);
-            $table->string('kode_cabang', 200)->nullable(false);
             $table->text('alamat')->nullable(false);
-            $table->string('kontak_cabang', 255)->nullable(false);
+            $table->string('kode_cabang', 200)->nullable(false);
+            $table->string('nama_cabang', 100)->nullable(false);
+            $table->string('penanggung_jawab', 255)->nullable(false);
 
             // foreign key id perusahaan
             $table->foreign('id_perusahaan')

@@ -1,6 +1,6 @@
 import 'bootstrap';
 //jQuery
-import jQuery from 'jQuery';
+import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
 
 //Datatables
@@ -9,7 +9,7 @@ window.DataTable = DataTable;
 
 //sweetalert
 import Swal from 'sweetalert2';
-window.Swal = Swal;
+window.swal = Swal;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
